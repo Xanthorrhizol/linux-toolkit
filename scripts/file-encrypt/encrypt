@@ -1,0 +1,10 @@
+#!/bin/bash
+if [ $# -ne 2 ]; then
+  echo "Usage: $(basename $0) <input filename> <output filename>"
+  exit -1
+fi
+if [[ "$1" == "$2" ]]; then
+  echo "input & output filename should be different"
+  exit -1
+fi
+openssl aes-256-cbc -in $1 -out $2

@@ -1,0 +1,8 @@
+#!/bin/bash
+if [ $# -ne 1 ]; then
+  echo "Usage: $(basename $0) <filename>"
+  exit -1
+fi
+echo "Enter password"
+read -s PASSWORD
+echo -n $PASSWORD | openssl aes-256-cbc -d -in $1 --pass stdin
